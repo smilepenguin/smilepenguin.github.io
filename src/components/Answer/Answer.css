@@ -1,0 +1,8 @@
+.answer {
+    display: block;
+    padding: 1px 10px;
+}
+
+.answer input[type="radio"] {
+    margin-right: 8px;
+}

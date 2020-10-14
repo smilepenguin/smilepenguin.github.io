@@ -1,0 +1,29 @@
+.persons-list {
+    display: flex;
+    flex-flow: row-reverse nowrap;
+    justify-content: space-between;
+}
+
+.persons-menu-wrap {
+    min-width: 180px;
+    margin-left: 20px;
+}
+
+.persons-menu {
+    position: sticky;
+    top: 0;
+}
+
+.persons-menu ul {
+/*    list-style: none; */
+}
+
+.persons-menu li a {
+    display: block;
+    text-decoration: none;
+    line-height: 1.5;
+}
+
+.persons-content {
+    flex: 1;
+}
