@@ -1,5 +1,6 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const CopyPlugin = require('copy-webpack-plugin');
 
 module.exports = {
     mode: 'development',
@@ -24,7 +25,8 @@ module.exports = {
             },
             {
                 test: /\.(png|jpg|svg|bmp)$/,
-                use: 'file-loader'
+                exclude: /(node_modules)/,
+                use: 'file-loader',
             },
             {
                 test: /\.json$/,
@@ -33,11 +35,11 @@ module.exports = {
         ]
     },
     resolve: {
-        extensions: ['.js', '.jsx']
+        extensions: ['.js', '.jsx', '.json']
     },
     output: {
         path: path.resolve('dist'),
-        filename: '[name].js'
+        filename: 'static/js/[name].js',
     },
     devServer: {
         contentBase: path.resolve('src')
@@ -47,6 +49,12 @@ module.exports = {
             template: path.resolve('public', 'index.html'),
             chunks: ['main'],
             minify: true,
-        })
+        }),
+        new CopyPlugin({
+            patterns: [
+                { from: path.resolve('src', 'images'), to: path.resolve('dist', 'images') },
+                { from: path.resolve('src', 'data'), to: path.resolve('dist', 'data') },
+            ],
+        }),
     ]
 };
