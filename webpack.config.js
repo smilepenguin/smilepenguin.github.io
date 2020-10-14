@@ -46,7 +46,7 @@ module.exports = {
         new HtmlWebpackPlugin({
             template: path.resolve('public', 'index.html'),
             chunks: ['main'],
-            minify: true
+            minify: true,
         })
     ]
 };
